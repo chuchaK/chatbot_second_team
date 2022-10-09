@@ -22,6 +22,7 @@
       "Блок 3, вопрос 4",
     ],
     4: [],
+  
   };
   let counter: number = 1;
 
@@ -64,12 +65,16 @@
         data: value,
       },
     ];
-    if (counter < 4) counter += 1;
+     counter += 1;
   };
 
-  $: console.log("counter", counter);
+  // $: console.log("counter", counter);
 </script>
-
+<!-- <div>
+  <img class = "img_a" alt="intelligent assistent" src="Avatar.png">
+  <p>Привет! Я ???.<br>
+    Виртуальный помощник.</p>
+  </div> -->
 <div id="bodybox">
   <div id="chatborder">
     {#each messages as message}
@@ -77,17 +82,21 @@
         {message.data}
       </p>
     {/each}
-    <!-- <input
+    <input
+      class="message"
       type="text"
       name="chat"
       bind:value={userMessage}
-      placeholder="Hi there! Type here to talk to me."
-    /> -->
-    <!-- <button type="button" on:click={sendHandler}>Send</button> -->
-    {#each buttons[counter] as buttonText}
-      <button type="button" on:click={() => questionHandler(buttonText)}
+      placeholder="Сообщение"
+    /> 
+     <button type="button" class="send"on:click={sendHandler}>Send</button> 
+    <p>{#each buttons[counter] as buttonText}
+      <button type="button" style = "background-color: #C6B0F1;
+      border-radius: 10px;
+        font-family: 'Roboto', sans-serif
+        font-size: 100%; height: 60%" on:click={() => questionHandler(buttonText)}
         >{buttonText}</button
       >
-    {/each}
+    {/each}</p>
   </div>
 </div>

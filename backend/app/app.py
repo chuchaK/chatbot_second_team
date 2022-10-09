@@ -22,6 +22,7 @@ answers = {
   "Блок 3, вопрос 2": ["Блок 3, ответ 2"], 
   "Блок 3, вопрос 3": ["Блок 3, ответ 3"], 
   "Блок 3, вопрос 4": ["Блок 3, ответ 4"], 
+  
 }
 
 app.add_middleware(
@@ -37,8 +38,8 @@ async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     while True:
       data = await websocket.receive_text()
-      # user_input = process_input(data)
-      # ans = kernel.respond(user_input)
+     # user_input = process_input(data)
+     # ans = kernel.respond(user_input)
       for answer in answers[data]:
         await websocket.send_text(answer)
 
